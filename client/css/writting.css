@@ -1,0 +1,97 @@
+html,
+			body {
+				background-color: #f7f7f8;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				padding-top: 5px;
+				width: 100%;
+				height: 100%;
+				background-color: #f7f7f8;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 200ms ease;
+				transition: transform 200ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #f7f7f8;
+			}
+			.mui-bar {
+				-webkit-box-shadow: 0 0 0px rgba(0, 0, 0, .85);
+			}
+
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			.mui-icon{
+				color: black;
+			}
+			#page,#item,#video-item,#thumbs{
+				position: fixed;
+			}
+			.block {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				z-index: 0;
+				left: 0;
+				top: 0;
+			}
+			.popover{
+				width: 100px;
+				text-align: center;
+				position: fixed;
+			}
+			video{
+				margin-top: -25px;
+				height: 100%;
+				width: 100%;
+			}

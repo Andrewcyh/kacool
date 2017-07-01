@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="./css/app.css" />
+		<link rel="stylesheet" type="text/css" href="./css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/cropper.css"  />
+		<style>
+			#header{
+				background-color: transparent;
+				box-shadow: 0 0px 0px;
+				border: 0;
+			}
+			
+			#head-img0 {
+				position: absolute;
+				margin-top: -275px;
+				margin-left: -60px;
+				/*margin-left: 28%;*/
+				width: 140px;
+				height: 140px;
+				border-radius: 70px;
+			}
+			
+			.frosted-glass{
+				margin-top: 40px;
+	            height: 90%;
+	            width: 100%;
+	            background: inherit;
+	            background-image: url(/var/mobile/Containers/Data/Application/653D5080-3BF8-42AF-8F63-2332D665D7C3/Library/Pandora/apps/HBuilder/doc/head.jpg?version=1472742444935);
+	            -webkit-filter: blur(5px);
+	            filter: blur(7px);
+	            /*transform:rotate(90deg);*/
+	            }
+			
+			.mui-content-padded{
+				height: 400px;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				padding: 0px;
+				text-align: center;
+			}
+	            
+	        .a-upload {
+			    padding: 10px 10px;
+			    height: 40px;
+			    width: 300px;
+			    margin-top: 20px;
+			    margin-left: 20px;
+			    line-height: 20px;
+			    position: relative;
+			    cursor: pointer;
+			    color: white;
+			    background-color: #007AFF;
+			    /*background: #fafafa;*/
+			    border: 1px solid #ddd;
+			    border-radius: 4px;
+			    /*overflow: hidden;*/
+			    display: inline-block;
+			    *display: inline;
+			    *zoom: 1
+			}
+			
+			.a-upload  input {
+			    position: absolute;
+			    /*font-size: 100px;*/
+			    /*right: 0;
+			    top: -10%;*/
+			    margin-left: -100px;
+			   	width: 300px;
+			    opacity: 0;
+			    filter: alpha(opacity=0);
+			    cursor: pointer
+			}
+			
+	        #confirm{
+	        	margin-top: -5px;
+	        	background-color: #4cd964;
+	        	border: #4cd964;
+	        	/*left: -26%;*/
+	        	top: 30px;
+	        	width: 300px;
+	        	height: 40px;
+	        	font-size: 18px;
+	        	padding: 2px;
+			}
+			
+			#ok{
+				top: 400px;
+				left: 10px;
+				position: absolute; 
+				display: none;
+				width: 350px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="mui-content mui-scroll-wrapper" style="padding: 0px;">
+			<!--<ul class="img-list"></ul>-->
+			<div class="mui-content-padded" >
+				<header id="header" class="mui-bar mui-bar-nav" >
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<!--<h1 class="mui-title">设置头像</h1>-->
+				</header>
+				<div class='frosted-glass' id="glass"></div>
+				<img  id="head-img0" src=""/>
+				<div id="showEdit">
+					<button id="ok" onclick="confirm();">完成</button>
+					<br /><br />
+			        <div id="report" class="cropper-container"><img id="head-img1" src=""/></div>
+			    </div>
+				
+				
+				<a href="javascript:;" class="a-upload" id="a-upload">
+					<input type="file" name="file" id="addpic" multiple="multiple"/>选择头像
+				</a>
+				
+			</div>
+		</div>
+		<script src="js/jquery-2.2.2.js"></script>
+		<script src="./js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/cropper.js"></script>
+		<script src="js/avatar.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+				});
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>KaCool</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<link rel="stylesheet" href="css/writting.css">
+		<link rel="stylesheet" type="text/css" href="./css/feedback-page.css" />
+	</head>
+
+	<body id="bady">
+		<!--页面主结构开始-->
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!--页面主结构结束-->
+		<!--单页面开始-->
+		<div  id="writing" class="mui-page">
+			<!--页面标题栏开始-->
+			<div  class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<button type="button" style="float: right;color: black;z-index: 999999;"
+					class="mui-btn-link">完成</button>
+			</div>
+			
+			<div id="page" class="mui-popover" >
+				  <ul class="mui-table-view">
+				    <li id="newcard" class="mui-table-view-cell"><a href="#">卡片</a></li>
+				    <li id="newvideo" class="mui-table-view-cell"><a href="#">视频</a></li>
+				  </ul>
+			</div>
+			
+			<div id="thumbs" class="mui-popover" style="width: 320px;">
+				<div style="height: 170px;">
+				    <div class="mui-scroll-wrapper">
+				    	<div id="thumbnail" class="mui-scroll" style="width: 320px;">
+				    		
+				    	</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="item" class="mui-popover" >
+				  <ul class="mui-table-view">
+				    <li id="newpic" class="mui-table-view-cell"><a href="#">图片</a></li>
+				    <li id="newtxt" class="mui-table-view-cell"><a href="#">文字</a></li>
+				  </ul>
+			</div>
+			
+			<div id="video-item" class="mui-popover" >
+				  <ul class="mui-table-view">
+				    <li id="choose" class="mui-table-view-cell"><a href="#">选择</a></li>
+				    <li id="capture" class="mui-table-view-cell"><a href="#">录制</a></li>
+				  </ul>
+			</div>
+			
+			<nav class="mui-bar mui-bar-tab">
+				
+					<a class="mui-tab-item" href="#page">
+						<span class="mui-icon mui-icon-plus"></span>
+					</a>
+					<a class="mui-tab-item" href="#thumbs" id="show">
+						<span class="mui-icon mui-icon-arrowup"></span>
+					</a>
+					<a class="mui-tab-item" href="#item" id="cardadd">
+						<span class="mui-icon mui-icon-bars"></span>
+					</a>
+					<a class="mui-tab-item" href="#video-item" id="videoadd" style="display: none;">
+						<span class="mui-icon mui-icon-bars"></span>
+					</a>
+			</nav>
+			
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			
+			<div id="page0"  class="mui-page-content active-page card-page" >
+				<div>
+					<a href="#color"><img id="block-of-second" class="block" src="images/IMG_2932.jpg"/></a>
+					<div id="color" class="mui-popover popover" >
+						<ul class="mui-table-view" >
+						    <li class="mui-table-view-cell delete-item" >
+						    	<a href="#" >删除</a>
+						    </li>
+						    <li class="mui-table-view-cell" >
+						    	<a href="#" >喝地</a>
+						    </li>
+						</ul > 
+					</div>
+				</div>
+			</div>
+			<div class="mui-page-content video-page" style="display: none;">
+				<video webkit-playsinline  id="video" class="vplayinside notaplink vido" x-webkit-airplay controls loop="loop"></video>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-2.2.2.js"></script>  
+	<script src="./js/mui.min.js "></script> 
+	<script src="./js/mui.view.js "></script>
+	<script src="./js/app.js"></script>
+	<script>
+		mui.init({
+			gestureConfig:{
+				tap: true, //默认为true
+				doubletap: true, //默认为false
+				longtap: true, //默认为false
+				swipe: true, //默认为true
+				drag: true, //默认为true
+				hold:false,//默认为false，不监听
+				release:false//默认为false，不监听
+			}
+		});
+		 //初始化单页view
+		var viewApi = mui('#app').view({
+			defaultPage: '#writing'
+		});
+		 //初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll({
+		    scrollY: false, //是否竖向滚动
+		    scrollX: true, //是否横向滚动
+		    startX: 0, //初始化时滚动至x
+		    startY: 0, //初始化时滚动至y
+		    indicators: true, //是否显示滚动条
+		    deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		    bounce: true //是否启用回弹
+		});
+	</script>
+	
+	<script>
+		var pageCount = 0;
+		var currentPage = 0;
+		var videoadd = document.getElementById("videoadd");
+		var cardadd = document.getElementById("cardadd");
+		var thumbnail = document.getElementById("thumbnail");
+		var btnTag = "txt";
+		
+		var newcard = document.getElementById("newcard");
+		newcard.addEventListener('tap', function() {
+			if(pageCount >= 8){
+				alert("9 already.");
+				return;
+			}
+			var temp = currentPage;
+			html2canvas(document.getElementById("page" + temp), {
+				allowTaint: true,
+				taintTest: false,
+				onrendered: function(canvas) {
+					//生成base64图片数据 
+					if(pageCount == (temp+1)) {
+						//生成base64图片数据 
+						var dataUrl = canvas.toDataURL();
+						var newImg = document.createElement("img");
+						newImg.src = dataUrl;
+						if($(document.getElementById("page"+temp)).hasClass("video-page")) 
+						document.getElementById(temp).src="images/play.jpg";
+						newImg.style.width = "96px";
+						newImg.style.height = "160px";
+						newImg.style.display = "inline";
+						newImg.style.float = "left";
+						newImg.style.marginRight = "10px";
+						$(newImg).addClass('thumb').attr('id', temp);
+						if(pageCount > 2) {
+							$(thumbnail).width((pageCount + 1) * $(newImg).width());
+						}
+						if(!document.getElementById(temp)){
+							thumbnail.appendChild(newImg);
+						}
+					}else if((temp+1) < pageCount){
+						var dataUrl = canvas.toDataURL();
+						document.getElementById(temp).src = dataUrl;
+						if($(document.getElementById("page"+temp)).hasClass("video-page")) 
+						document.getElementById(temp).src="images/play.jpg";
+					}
+				}
+			});
+			
+			$(".active-page").removeClass('active-page');
+			$("#writing").append('<div id="page' + ++pageCount + '" class="mui-page-content card-page active-page"><div><a href="#choi1"><textarea class="block">' + 'this is No.' + pageCount + ' page' + '</textarea></a><div id="choi1" class="mui-popover popover"><ul class="mui-table-view"><li class="mui-table-view-cell delete-item"><a href="#">删除</a></li><li class="mui-table-view-cell"><a href="#">喝地</a></li></ul></div></div></div>');
+			currentPage = pageCount;
+			if(btnTag == "vdo") {
+				$(cardadd).toggle();
+				$(videoadd).toggle();
+				btnTag = "txt";
+			}
+		})
+		
+		var newvideo = document.getElementById("newvideo");
+		newvideo.addEventListener('tap',function(){
+			if(pageCount >= 8){
+				alert("9 already.");
+				return;
+			}
+			var temp = currentPage;
+			html2canvas(document.getElementById("page" + temp), {
+				allowTaint: true,
+				taintTest: false,
+				onrendered: function(canvas) {
+					//生成base64图片数据 
+					if(pageCount == (temp+1)) {
+						//生成base64图片数据 
+						var dataUrl = canvas.toDataURL();
+						var newImg = document.createElement("img");
+						newImg.src = dataUrl;
+						if($(document.getElementById("page"+temp)).hasClass("video-page")) 
+						document.getElementById(temp).src="images/play.jpg";
+						newImg.style.width = "96px";
+						newImg.style.height = "160px";
+						newImg.style.display = "inline";
+						newImg.style.float = "left";
+						newImg.style.marginRight = "10px";
+						$(newImg).addClass('thumb').attr('id', temp);
+						if(pageCount > 2) {
+							$(thumbnail).width((pageCount + 1) * $(newImg).width());
+						}
+						if(!document.getElementById(temp)){
+							thumbnail.appendChild(newImg);
+						}
+					}else if((temp+1) < pageCount){
+						var dataUrl = canvas.toDataURL();
+						document.getElementById(temp).src = dataUrl;
+						if($(document.getElementById("page"+temp)).hasClass("video-page")) 
+						document.getElementById(temp).src="images/play.jpg";
+					}
+				}
+			});
+			
+			$(".active-page").removeClass('active-page');
+			$("#writing").append('<div id="page' + ++pageCount + '" class="mui-page-content video-page active-page"><video webkit-playsinline  class="vplayinside notaplink vido" x-webkit-airplay controls loop="loop"></video></div>');
+			currentPage = pageCount;
+			if(btnTag == "txt"){
+				$(cardadd).toggle();
+				$(videoadd).toggle();
+				btnTag = "vdo";
+			}
+		})
+		
+	</script>
+	<script>
+		var btnV = document.getElementById("capture");
+		var btnS = document.getElementById("choose");
+		function getVideo() {
+				var c = plus.camera.getCamera();
+				var res = c.supportedVideoResolutions[0];
+				c.startVideoCapture(function(e) {
+					plus.io.resolveLocalFileSystemURL(e, function(entry) {
+						var s = entry.toLocalURL() + "?version=" + new Date().getTime();
+						$('.active-page video').attr('src',s);
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(s) {
+					console.log("error" + s.toLocaleString());
+				}, {
+					resolution:res,
+					filename: "_doc/head.mp4"
+				})
+			}
+		
+		var galleyVideos = function() {
+                plus.gallery.pick(function(pth) {
+//                  var v = document.getElementById('video');
+//                  v.src = pth;
+					$('.active-page video').attr('src',pth);
+                }, function(e) {
+                    console.log(JSON.stringify(e));
+                }, {
+                    filter: 'video'
+                });
+            };
+		
+		btnV.addEventListener('tap',getVideo);
+		btnS.addEventListener('tap',galleyVideos);
+	</script>
+	<script src="./js/writting.js"></script> 
+    <script src="js/html2canvas.js"></script>
+	
+</html>
