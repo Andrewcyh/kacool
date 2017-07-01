@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="./css/app.css" />
+		<link rel="stylesheet" type="text/css" href="./css/main.css" />
+		<style>
+			.mui-card{
+				margin-left: 0px;
+				margin-right: 0px;
+				margin-bottom: 5px;
+			}
+			.mui-card-content{
+				height: 100px;
+				overflow: hidden;
+			}
+			.play-button{
+				width: 50px;
+				position: absolute;
+				/*margin-top: 40px;*/
+				top: 45%;
+				margin-left: 43%;
+			}
+			.muisic-bg{
+				width: 100%;
+				margin-bottom: -10px;
+			}
+			.mui-slider-item .play-button{
+				top: 22%;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="add-back"></a>
+			<h1 class="mui-title">更多音乐</h1>
+			<a class="mui-icon mui-icon-search" id="findmusic" style="float: right;"></a>
+		</header>
+		
+		<div class="mui-content mui-scroll-wrapper">
+			<div id="musicStore" class="mui-content-padded" style="margin-top: 15px;">
+				<div class="mui-slider" id="slider2">
+					<div id="loop" class="mui-slider-group mui-slider-loop">
+						<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/ic.jpg" class="music-images" /></a></div>
+						<div class="mui-slider-item"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/moss.jpg" class="music-images"/></a></div>
+						<div class="mui-slider-item"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/timg.jpg" class="music-images"/></a></div>
+						<div class="mui-slider-item"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/neu.jpg" class="music-images"/></a></div>
+						<div class="mui-slider-item"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/ic.jpg" class="music-images"/></a></div>
+						<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img style="width: 50px;" class="play-button" src="images/playBtn.jpg"/><img src="images/moss.jpg" class="music-images"/></a></div>
+					</div>
+				</div>
+				<br />
+				全部音乐
+				<div id="box">
+					<div id="musicCard0" class="mui-card">
+						<div class="mui-card-content">
+							<img class="play-button" src="images/playBtn.jpg"/>
+							<img class="muisic-bg"  src="images/bgi.png" alt=""/>
+							<audio src="music/grude.mp3"></audio>
+						</div>
+						<div class="mui-card-footer">
+							<div>舍不得过-赵照</div>
+							<a class="mui-card-link">添加</a>
+						</div>
+					</div>
+				</div>
+				
+				<!--<button>123</button>-->
+				<!--<div class="mui-card">
+					<div class="mui-card-content">
+						<img class="play-button" src="images/playBtn.jpg"/>
+						<img class="muisic-bg" src="images/IMG_4193.jpg" alt=""/>
+						<audio src="music/grude.mp3"></audio>
+					</div>
+					<div class="mui-card-footer">
+						<div>name</div>
+						<div>Name</div>
+						<a class="mui-card-link">添加</a>
+					</div>
+				</div>
+				<div class="mui-card">
+					<div class="mui-card-content">
+						<img class="play-button" src="images/playBtn.jpg"/>
+						<img class="muisic-bg" src="images/timg.jpg" alt=""/>
+						<audio src="music/grude.mp3"></audio>
+					</div>
+					<div class="mui-card-footer">
+						<div>Name</div>
+						<a class="mui-card-link">添加</a>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script src="js/jquery-2.2.2.js"></script>
+		<script src="./js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/music.js"></script>
+		<script src="js/find.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+				
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			
+			var slider = mui("#slider2");
+	
+			slider.slider({
+				interval: 1000
+			});
+			
+			function update(){
+				var a = app.getMusic();
+			}
+			mui('#box').on('tap','.play-button',function(){
+				var audio = this.nextElementSibling.nextElementSibling;
+				if(audio.paused){
+					audio.play();
+					$(this).parent().animate({
+						height:'300px'
+					},1000);
+					return;
+				}
+				audio.pause();
+				$(this).parent().animate({
+						height:'100px'
+				},1000);
+			})
+			window.onload = update;
+		</script>	
+	</body>
+</html>

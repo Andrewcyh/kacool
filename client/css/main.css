@@ -1,0 +1,164 @@
+			ul {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-off-canvas-left {
+				color: #fff;
+			}
+			.title {
+				margin: 35px 5px 0px;
+			}
+			.title2 {
+				font-size: 14px;margin-left: 5px;margin-top: 5px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: white;
+				text-indent: 1em;
+				font-size: 40px;
+				line-height: 24px;
+			}
+			input {
+				color: #000;
+			}
+			.img{
+				border-radius: 50px;
+				-webkit-border-radius: 50px;
+				-moz-border-radius: 50px;
+				margin-left:30px;
+				margin-top:70px;
+				width: 60px;
+				height: 60px;
+			}
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+				
+			}
+	
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			.oa-contact-content {
+				width: 65%;
+				
+			}
+			.oa-contact-name {
+				/*margin-right: 20px;*/
+			}
+			.oa-contact-name, oa-contact-position {
+				float: left;
+			}
+			.oa-contact-email{
+				margin-left: -20px;
+			}
+			.oa-contact-name,.oa-contact-email{
+				color: #000000;
+			}
+			.title1{
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			.card-container{
+				margin-top:5px;
+				margin-left: 5px;
+				margin-right:0px;
+				background-color: #f5fcff;
+			}
+			.card-img{
+				padding-top: 3px;
+				height: 190px;
+				width: 98%;
+				border-radius: 1%;
+			}
+			.card-images{
+				padding-top: 3px;
+				height: 230px;
+				width: 98%;
+				border-radius: 1%;
+			}
+			.music-images{
+				padding-top: 3px;
+				/*height: 180px;*/
+				border-radius: 1%;
+			}
+			.card-title{
+				font-size: 15px;
+				text-align: left;
+				color: #333333;
+				margin-left: 10px;	
+			}
+			.card-person{
+				font-size: 13px;
+				text-align: left;
+				color: #525252;
+				margin-left: 10px;
+			}
+			.card-time{
+				font-size: 13px;
+				text-align: left;
+				color: #2d85ca;
+				margin-left: 10px;
+			}
+			.mui-makingpage{
+				border: solid 1px #007AFF;
+				border-radius: 5%;
+				height: 400px;
+				margin: 5px;
+			}
+			.mui-icon{
+				padding-left: 7px;
+			}
+			.mui-li{
+				height: 20%;
+				width: 20%;
+				padding-top: 6px;
+			}
+			.delete{
+				width: 112px;
+				height: 72px;
+				background-color: transparent;
+			}
+			.mui-backdrop {
+			    position: fixed;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    z-index: 998;
+			    /*background-color: rgba(0,0,0,.3);*/
+			   background-color: rgba(0,0,0,0);
+			}
+			
+			.mui-card-header>img {
+				border-radius:17px;
+			}
+			
+			.mui-card-header .mui-card-link{
+				float: right;
+				margin-top: -35px;
+			}
